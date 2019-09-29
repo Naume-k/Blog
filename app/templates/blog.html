@@ -1,0 +1,39 @@
+{% import 'bootstrap/wtf.html' as wtf %}
+{% extends 'bootstrap/base.html' %}
+{% include 'navbar.html'%}
+{% block content %}
+<!-- Styles block -->
+<link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
+
+{% block styles%}
+{{ super() }}
+<!-- <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}"> -->
+<link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
+{% endblock %}
+<!-- Content block -->
+<div class="container">
+	<div class="row">
+
+		{{wtf.quick_form(form)}}
+		<ul style="list-style: none;">
+				<h3 style="font-family: 'Great Vibes', cursive;font-size: 44px; text-align:center;">Blogs</h3>
+			{% for blog in blogs %}
+			
+			<div class="list-group">
+
+				<div class="list-item" style="box-shadow: 2px 4px 12px 2px rgb(71, 71, 71); margin: 1rem; padding: 0; border-radius: 10px;font-family: 'Great Vibes', cursive;font-size: 24px;">
+					
+					{{blog.id}}.
+
+					{{ blog.description }}
+				</div>
+
+			</div>
+			{% endfor %}
+		</ul>
+
+	</div>
+</div>
+
+
+{% endblock %}

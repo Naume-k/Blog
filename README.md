@@ -78,14 +78,23 @@ WTForms==2.2.1
 
 ### User Stories
 A user would like to view the blog posts on the site
+
 A user would like to comment on blog posts
+
 A user would like to view the most recent posts
+
 A user would like to an email alert when a new post is made by joining a subscription.
+
 A user would like to see random quotes on the site
+
 A writer would like to sign in to the blog.
+
 A writer would also like to create a blog from the application.
+
 A writer would like to delete comments that I find insulting or degrading.
+
 A writer would like to update or delete blogs I have created.
+
 ### Technologies Used
 Python 3.6
 

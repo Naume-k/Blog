@@ -1,0 +1,58 @@
+{% macro displayBlog(blog_List) %}
+<div class="row">
+    {% if blog_List %}
+    {% for blog in blog_List %}
+    <div class="col-md-6" style="box-shadow: 2px 4px 12px 2px rgb(148, 147, 147); margin: 1rem; padding: 0; border-radius: 10px; margin-bottom: 20px;background-image:linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url(https://t3.ftcdn.net/jpg/02/47/20/64/240_F_247206422_lfNYFaklI3gFebd3jyLkb0clxKaJ9g8l.jpg)">
+
+        <div class="text-center">
+            <p>Title:{{blog.title}}</p>
+
+
+            <blockquote>
+                <h2 style="font-family: 'Great Vibes', cursive;">{{blog.description}}</h2>
+                <footer class="blockquote-footer" style="text-align:right;"> {{blog.user.username}}</footer>
+            </blockquote>
+
+            <div><span class="foot">{{blog.comments.count()}}</span>
+                <!-- comment -->
+                <a href="{{url_for('main.new_comment',blog_id = blog.id)}}"> <i class="fas fa-comment" style="font-size:24px"></i></a>
+
+
+                <!-- update_blog -->
+                <a href="{{url_for('main.update_blog',id = blog.id)}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
+                <!-- delete blog -->
+                <a href="{{url_for('main.delete',id = blog.id)}}"><i class="fa fa-trash" style="font-size:24px"></i></a>
+            </div>
+
+
+        </div>
+
+    </div>
+    {% endfor %}
+    {% else %}
+    {% endif %}
+</div>
+{% endmacro %}
+
+{% macro displayComment(comments) %}
+<ul>
+
+    {% if comments %}
+    {% for comment in comments %}
+    <div class="row text-center" style="margin-bottom:20px;">
+        <a>
+            <p style="color: rgb(10, 10, 10);">{{ comment.description }}</p>
+        </a>
+        <small> posted by {{comment.user.username}}</small>
+        <a href="{{url_for('main.delete_comment',id = comment.id)}}"><i class="fa fa-trash" style="font-size:24px;"></i></a>
+
+    </div>
+    {% endfor %}
+    {% else %}
+
+    <h3>This post does not does not have any comments yet !</h3>
+    {%endif%}
+
+</ul>
+
+{% endmacro %}

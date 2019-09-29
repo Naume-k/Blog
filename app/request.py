@@ -4,9 +4,7 @@ import requests
 from config import Config
 
 base_url = Config.QUOTE_URL
-# def configure_request(app):
-#     global base_url
-#     base_url = app.config["QUOTE_URL"]
+
 
 def get_quotes():
     '''

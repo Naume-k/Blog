@@ -1,0 +1,46 @@
+{% extends 'bootstrap/base.html' %}
+{% import 'macros.html' as macro %}
+{% block navbar %}
+{% include 'navbar.html'%}
+{% endblock %}
+<!-- Styles block -->
+
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
+
+{% endblock %}
+<!-- Content block -->
+{% block content %}
+
+
+<div class="container" style="background-image: url(https://previews.123rf.com/images/dashamuller/dashamuller1801/dashamuller180100343/93965943-white-bridal-accessories-for-wedding-background-with-pearls-white-satin-ribbons-and-lace-gloves-brac.jpg); background-repeat: no-repeat; background-size: cover;">
+    <div class="row">
+        <div class="col-sm-3">
+            <h1 style="text-align:center;margin-top:50px; font-size: 44px; font-family: 'Great Vibes', cursive;border-bottom:2px solid rgb(7, 7, 7)">
+                Quotes</h1>
+            <br>
+            <blockquote class="text-center text-lg" style="background-image:url(https://marketplace.canva.com/MADPWKqM0s8/1/thumbnail_large/canva-wooden-frame-on-light-background-MADPWKqM0s8.jpg);background-repeat: no-repeat; background-size: cover; color:rgb(8, 8, 8);box-shadow: 2px 4px 12px 2px rgb(71, 71, 71); margin: 1rem; padding: 0; border-radius: 10px; border-width: 70px;">
+                <p><i>{{ quotes.quote }}</i></p>
+                <p>~{{ quotes.author }}</p>
+            </blockquote>
+
+        </div>
+<div class="col-md-2"></div>
+        <div class="tab-content col-sm-6" >
+                <h1 style="text-align:center;margin-top:50px; font-size: 44px; font-family: 'Great Vibes', cursive;border-bottom:2px solid rgb(7, 7, 7)">
+                        Blogs</h1>
+            <div class="container tab-pane active" id="all"> <br>
+                {{macro.displayBlog(blogs)}}
+            </div>
+        </div>
+    </div>
+</div>
+<div style="margin-top:300px; background-color:black;text-align:center;color:white;height:100px;font-size:18px;padding-top:40px;">
+    <p> &copy;2019 copyright | kobnaome |All Right Reserved </p>
+</div>
+{% endblock %}
+
+

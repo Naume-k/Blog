@@ -1,7 +1,7 @@
 from . import main
 from flask_login import login_required
 from flask import render_template,request,redirect,url_for,abort
-from ..models import *#Blog, User, Comment#,Upvote,Downvote
+from ..models import *
 from .forms import BlogForm,UpdateProfile, CommentForm,UpdateBlogForm
 from .. import db,photos
 from .. request import get_quotes
@@ -66,7 +66,7 @@ def index():
 
     quotes = get_quotes()
     blogs = Blog.query.all()
-    return render_template('index.html',blogs=blogs,quotes = quotes)    #,upvotes=upvotes)
+    return render_template('index.html',blogs=blogs,quotes = quotes)    
 
 
 @main.route('/blog/new/', methods = ['GET','POST'])
@@ -74,12 +74,10 @@ def index():
 def new_blog():
     form = BlogForm()
     blogs = Blog.query.all()
-    # my_upvotes = Upvote.query.filter_by(pitch_id = Pitch.id)
     if form.validate_on_submit():
         description = form.description.data
         title = form.title.data
         author_id = current_user
-        # category = form.category.data
         print(current_user._get_current_object().id)
         new_blog = Blog(user_id =current_user._get_current_object().id, title = title,description=description)#,category=category)
         db.session.add(new_blog)
@@ -88,37 +86,6 @@ def new_blog():
         return redirect(url_for('main.index' ))
     return render_template('blog.html',form=form,blogs=blogs)
 
-# @main.route('/pitch/upvote/<int:pitch_id>/upvote', methods = ['GET', 'POST'])
-# @login_required
-# def upvote(pitch_id):
-#     pitch = Pitch.query.get(pitch_id)
-#     user = current_user
-#     pitch_upvotes = Upvote.query.filter_by(pitch_id= pitch_id)
-    
-#     if Upvote.query.filter(Upvote.user_id==user.id,Upvote.pitch_id==pitch_id).first():
-#         return  redirect(url_for('main.index'))
-
-
-#     new_upvote = Upvote(pitch_id=pitch_id, user = current_user)
-#     new_upvote.save_upvotes()
-#     return redirect(url_for('main.index'))
-
-
-
-# @main.route('/pitch/downvote/<int:pitch_id>/downvote', methods = ['GET', 'POST'])
-# @login_required
-# def downvote(pitch_id):
-#     pitch = Pitch.query.get(pitch_id)
-#     user = current_user
-#     pitch_downvotes = Downvote.query.filter_by(pitch_id= pitch_id)
-    
-#     if Downvote.query.filter(Downvote.user_id==user.id,Downvote.pitch_id==pitch_id).first():
-#         return  redirect(url_for('main.index'))
-
-
-#     new_downvote = Downvote(pitch_id=pitch_id, user = current_user)
-#     new_downvote.save_downvotes()
-#     return redirect(url_for('main.index'))
 
 
 @main.route('/comment/new/<int:blog_id>', methods = ['GET','POST'])
@@ -126,12 +93,8 @@ def new_blog():
 def new_comment(blog_id):
     form = CommentForm()
     blog=Blog.query.get(blog_id)
-    # comments = Comment.query.filter_by(blog_id=blog_id).all()
     if form.validate_on_submit():
         description = form.description.data
-        # comment = form.comment.data
-        # blog_id = blog_id
-        # user_id = current_user._get_current_object().id
         new_comment = Comment(description = description, user_id = current_user._get_current_object().id, blog_id = blog_id)#user_id=user_id,
         db.session.add(new_comment)
         db.session.commit()

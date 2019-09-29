@@ -20,8 +20,7 @@ class User(UserMixin,db.Model):
     pass_secure = db.Column(db.String(255))
     comment = db.relationship('Comment', backref = 'user', lazy = 'dynamic')
     blogs= db.relationship('Blog',backref = 'user',lazy = "dynamic")
-    # upvotes = db.relationship('Upvote', backref = 'user', lazy = 'dynamic')
-    # downvotes = db.relationship('Downvote', backref = 'user', lazy = 'dynamic')
+    
   
     @login_manager.user_loader
     def load_user(user_id):
@@ -58,11 +57,9 @@ class Blog(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     title = db.Column(db.String)
     description = db.Column(db.String)
-    # category = db.Column(db.String(255), nullable=False)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
     comments = db.relationship('Comment',backref='blog',lazy='dynamic')
-    # upvotes = db.relationship('Upvote', backref = 'pitch', lazy = 'dynamic')
-    # downvotes = db.relationship('Downvote', backref = 'pitch', lazy = 'dynamic')
+    
 
     def save_blog(self):
         db.session.add(self)

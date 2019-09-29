@@ -1,15 +1,14 @@
-# Pitchit
+# Blog
 ## Description
-A web application where a user can go and view pitches or even post some according to the pitch category
+A web application for posting blogs and displaying random quotes
 ## Author
 Kobusingye Naume
 
 ### Link to Live Site
-https://napitch.herokuapp.com/
+
 
 ### Description
-This is an application that allows a user to create a pitch depending on a certain category and add pitch content. A user can also be able to comment and vote on another user's pitches.
-
+This is an application that allows a user to create a blog, view random quotes, delete edit blogs, update, comment and others.
 ### Installation Requirements
 Clone this repository and navigate to the folder. Run the following commands to allow functionality of the app:-
 
@@ -78,11 +77,15 @@ Werkzeug==0.15.6
 WTForms==2.2.1
 
 ### User Stories
-A user can see the pitches posted by other people
-A user can either downvote or upvote on a pitch as long as they are signed in.
-A user can add comment on the different pitches .
-A user can view and submit pitches by category.
-
+A user would like to view the blog posts on the site
+A user would like to comment on blog posts
+A user would like to view the most recent posts
+A user would like to an email alert when a new post is made by joining a subscription.
+A user would like to see random quotes on the site
+A writer would like to sign in to the blog.
+A writer would also like to create a blog from the application.
+A writer would like to delete comments that I find insulting or degrading.
+A writer would like to update or delete blogs I have created.
 ### Technologies Used
 Python 3.6
 
@@ -99,7 +102,7 @@ Postgressql
 Heroku
 
 ### Known Bugs
-No known bugs so far
+has no option for subscribing
 
 ### Support Details
 Contact me on my email for further help

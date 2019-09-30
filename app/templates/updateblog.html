@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
 {% import 'bootstrap/wtf.html' as wtf%}
+
+{% block styles%}
+{{ super() }}
+
+<link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
+
+{% endblock %}
 {% block content %}
 <div class="container" id="particles-js">
     <div class="row">
         <div class="col-md-2"> </div>
         <div class="col-md-8" id="postform">
-            <h2 class="text-center"> Create a blog</h2>
+            <h2 class="text-center" style="font-family: 'Great Vibes', cursive;"> Update your blog</h2>
             {{wtf.quick_form(form)}}
         </div>
         <div class="col-md-2"></div>

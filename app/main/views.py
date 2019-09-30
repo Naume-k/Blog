@@ -4,7 +4,7 @@ from flask import render_template,request,redirect,url_for,abort
 from ..models import *
 from .forms import BlogForm,UpdateProfile, CommentForm,UpdateBlogForm
 from .. import db,photos
-from .. request import get_quotes
+from .. requests import get_quotes
 from flask_login import login_required, current_user
 
 import markdown2 
@@ -151,6 +151,9 @@ def update_blog(id):
         db.session.commit()
 
         return redirect(url_for('main.index'))
+    elif request.method=='GET':
+            form.description.data=blogs.description
+            form.title.data=blogs.title
     return render_template('updateblog.html',form = form)
     
 
